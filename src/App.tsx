@@ -1,16 +1,18 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom"
-import { GlobalStyle } from "./GlobalStyle"
-import { Home } from "./pages/Home"
-import { Navbar } from "./components/Navbar"
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Home } from "./pages/Home";
+import { Navbar } from "./components/Navbar";
+import { MaxWidth } from "./components/MaxWidth";
 
 function App() {
+
   return (
     <BrowserRouter>
-      <GlobalStyle />
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-      </Routes>
+      <MaxWidth>
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </MaxWidth>
     </BrowserRouter>
   )
 }
