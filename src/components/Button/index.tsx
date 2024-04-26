@@ -1,11 +1,7 @@
-import React from "react"
-import { IButtonProps } from "../../interfaces/IButtonProps"
-import { StyledButton } from "./style"
+import React from "react";
+import { IButtonProps } from "../../interfaces/IButtonProps";
+import { StyledButton } from "./style";
 
-export const Button: React.FC<IButtonProps> = ({ children }) => {
-  return (
-    <StyledButton>
-      {children}
-    </StyledButton>
-  )
-}
+export const Button: React.FC<IButtonProps> = ({ children, onClick }) => {
+  return <StyledButton onClick={onClick}>{children}</StyledButton>;
+};

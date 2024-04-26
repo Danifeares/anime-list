@@ -1,3 +1,4 @@
 export interface IButtonProps {
-  children: string
+  children: string;
+  onClick: () => void;
 }
