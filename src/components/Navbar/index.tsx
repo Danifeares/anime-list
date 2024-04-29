@@ -11,14 +11,13 @@ export const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const isLoginPage = location.pathname === "/login";
+  const isRegisterPage = location.pathname === "/signup";
 
   const toLogin = () => {
-    navigate("/login");
-    console.log("me clicou");
+    navigate("/signup");
   };
 
-  if (isLoginPage) {
+  if (isRegisterPage) {
     return null;
   }
   return (
@@ -43,7 +42,7 @@ export const Navbar = () => {
             ),
           }}
         />
-        <Button onClick={toLogin}>Login</Button>
+        <Button onClick={toLogin}>SignUp</Button>
       </div>
     </Nav>
   );
