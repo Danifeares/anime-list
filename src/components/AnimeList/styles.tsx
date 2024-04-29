@@ -37,10 +37,6 @@ export const ContainerImg = styled('div')`
     transition: opacity 300ms ease;
     background-color: rgba(84, 79, 79, 0.7);
     border-radius: 16px;
-
-    &:hover {
-      opacity: 1;
-    }
   }
   &:hover {
     transform: scale(1.05);

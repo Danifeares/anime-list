@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { AnimeList } from "../../components/AnimeList";
 import { useGetAnimeList } from "../../hooks/useGetAnimeList";
 import { StyledBox } from "./style";
@@ -5,6 +6,7 @@ import { Pagination } from "@mui/material";
 
 export const Home = () => {
   const { topAnimes, handlePageChange, page } = useGetAnimeList();
+  const navigate = useNavigate();
 
   return (
     <StyledBox>
@@ -13,10 +15,11 @@ export const Home = () => {
         <Pagination count={10} page={page} onChange={handlePageChange} color="primary" />
       </div>
       <ul>
-        {topAnimes.data?.map((anime, i) => (
+        {topAnimes.data?.map((anime) => (
           <AnimeList
-            key={i}
+            key={anime.mal_id}
             anime={anime}
+            onClick={() => navigate('/animeDetails')}
           />
         ))}
       </ul>
