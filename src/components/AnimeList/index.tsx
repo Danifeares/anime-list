@@ -1,15 +1,19 @@
 import React from "react"
-import { IAnime } from "../../interfaces/IAnime"
 import { ContainerImg, ListItem } from "./styles"
+import { Anime } from "../../interfaces/ITopAnimes"
 
-export const AnimeList:React.FC<IAnime> = ({ anime }) => {
+interface Props {
+  anime: Anime;
+}
+
+export const AnimeList: React.FC<Props> = ({ anime }) => {
   return (
     <ListItem>
       <ContainerImg>
-        <img src="https://cdn.myanimelist.net/images/anime/1565/142711.jpg" />
+        <img src={anime.images.jpg.image_url} alt={anime.title} />
         <div>Ver mais</div>
       </ContainerImg>
-      <span>{anime}</span>
+      <span>{anime.title}</span>
     </ListItem>
   )
 }

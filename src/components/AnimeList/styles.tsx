@@ -4,7 +4,8 @@ export const ListItem = styled('li')`
   display: flex;
   flex-direction: column;
   color: #748899;
-  font-size: 20px;
+  font-size: 18px;
+  width: 210px;
   gap: 6px;
 `
 
@@ -12,11 +13,13 @@ export const ContainerImg = styled('div')`
   position: relative;
   transition: 300ms ease;
   width: 210px;
+  height: 310px;
   cursor: pointer;
   > img {
     position: relative;
     display: block;
     width: 100%;
+    height: 100%;
   }
   > div {
     position: absolute;
@@ -44,7 +47,6 @@ export const ContainerImg = styled('div')`
     filter: grayscale(100%);
     > div {
       display: block;
-      
     }
   }
 `
