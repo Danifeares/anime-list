@@ -1,23 +1,10 @@
 import { AnimeList } from "../../components/AnimeList";
+import { useGetAnimeList } from "../../hooks/useGetAnimeList";
 import { StyledBox } from "./style";
-import { useEffect, useState } from "react";
-import { http } from "../../http";
-import { ITopAnimes } from "../../interfaces/ITopAnimes";
 import { Pagination } from "@mui/material";
 
 export const Home = () => {
-
-  const [topAnimes, setTopAnimes] = useState<ITopAnimes>({});
-  const [page, setPage] = useState(1)
-
-  const handlePageChange = (event: React.ChangeEvent<unknown>, value: number) => {
-    setPage(value);
-  };
-
-  useEffect(() => {
-    http.get<ITopAnimes>(`/top/anime?limit=10&page=${page}`)
-      .then(res => setTopAnimes(res.data))
-  }, [page]);
+  const { topAnimes, handlePageChange, page } = useGetAnimeList();
 
   return (
     <StyledBox>
