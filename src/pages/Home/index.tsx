@@ -8,21 +8,30 @@ export const Home = () => {
   const { topAnimes, handlePageChange, page } = useGetAnimeList();
   const navigate = useNavigate();
 
+  const handleAnimeClick = (animeId: number) => {
+    navigate(`/aboutanime/${animeId}`);
+  };
+
   return (
     <StyledBox>
       <div>
         <h1>Top Animes</h1>
-        <Pagination count={10} page={page} onChange={handlePageChange} color="primary" />
+        <Pagination
+          count={10}
+          page={page}
+          onChange={handlePageChange}
+          color="primary"
+        />
       </div>
       <ul>
         {topAnimes.data?.map((anime) => (
           <AnimeList
             key={anime.mal_id}
             anime={anime}
-            onClick={() => navigate('/animeDetails')}
+            onClick={() => handleAnimeClick(anime.mal_id)}
           />
         ))}
       </ul>
     </StyledBox>
-  )
-}
+  );
+};
