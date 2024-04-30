@@ -2,8 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { Navbar } from "./components/Navbar";
 import { MaxWidth } from "./components/MaxWidth";
-import { AnimeDetails } from "./components/AnimeDetails";
-import { AboutAnimes } from "./pages/AnimePage";
+import { AnimePage } from "./pages/AnimePage";
 
 function App() {
   return (
@@ -12,7 +11,7 @@ function App() {
       <MaxWidth>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/aboutanimes" element={<AboutAnimes />} />
+          <Route path="/aboutanime/:id" element={<AnimePage />} />
         </Routes>
       </MaxWidth>
     </BrowserRouter>

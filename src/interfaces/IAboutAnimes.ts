@@ -1,21 +1,18 @@
 export type AboutAnime = {
-  mal_id: number;
-  title: string;
+  mal_id: string;
+  url: string;
   images: {
     jpg: {
       image_url: string;
     };
   };
-  trailer: {
-    youtube_id: string;
-    url: string;
-    embed_url: string;
-  };
-  type: "TV";
+  trailer: string;
+  title: string;
   episodes: number;
   status: string;
+  synopsis: string;
 };
 
-export interface IAboutAnimes {
-  data?: AboutAnime[];
+export interface IAboutAnime {
+  data?: AboutAnime;
 }
