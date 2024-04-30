@@ -7,26 +7,13 @@ export const StyledBox = styled(Box)`
   padding: 24px 48px;
   justify-content: center;
   box-sizing: border-box;
+  color: #748899;
+  gap: 24px;
   > div {
     display: flex;
-    align-items: baseline;
-    color: #748899;
     justify-content: space-between;
-    > h1 {
-      font-size: 32px;
-      text-decoration: underline;
-    }
-    > span {
-      display: flex;
-      align-items: center;
-      font-size: 16px;
-      gap: 6px;
-      cursor: pointer;
-      transition: 300ms ease;
-      &:hover{
-        transform: scale(1.1);
-      }
-    }
+    width: 100%;
+    align-items: baseline;
   }
   > ul {
     display: flex;
@@ -40,8 +27,9 @@ export const StyledBox = styled(Box)`
     padding: 0;
     > div {
       flex-direction: column;
-      margin-bottom: 16px;
+      margin: 16px 0;
       align-items: center;
+      gap: 16px;
     }
     > ul {
       justify-content: center;
