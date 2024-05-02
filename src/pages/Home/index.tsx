@@ -4,14 +4,33 @@ import { useGetAnimeList } from "../../hooks/useGetAnimeList";
 import { StyledBox } from "./style";
 import { InputAdornment, Pagination, TextField } from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
+import { useEffect, useState } from "react";
 
 export const Home = () => {
+  const [inputText, setInputText] = useState('');
   const { listOfAnimes, handlePageChange, page, setInputAnime } = useGetAnimeList();
   const navigate = useNavigate();
 
   const handleAnimeClick = (animeId: number) => {
     navigate(`/aboutanime/${animeId}`);
   };
+
+  const filtredUniqueAnimes: { [x: number]: boolean } = {};
+
+  const filtredAnimes = listOfAnimes.data?.filter(item => {
+    if (filtredUniqueAnimes.hasOwnProperty(item.mal_id)) {
+      return false;
+    }
+    filtredUniqueAnimes[item.mal_id] = true;
+    return true
+  })
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setInputAnime(inputText);
+    }, 500);
+    return () => clearTimeout(timeoutId);
+  }, [inputText]);
 
   return (
     <StyledBox>
@@ -21,7 +40,8 @@ export const Home = () => {
           label='Pesquisar'
           variant="filled"
           size='small'
-          onChange={(event) => setTimeout(() => setInputAnime(event?.target.value), 500)}
+          value={inputText}
+          onChange={(event) => setInputText(event?.target.value)}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
@@ -39,7 +59,7 @@ export const Home = () => {
       </div>
 
       <ul>
-        {listOfAnimes.data?.map((anime) => (
+        {filtredAnimes?.map((anime) => (
           <AnimeList
             key={anime.mal_id}
             anime={anime}
