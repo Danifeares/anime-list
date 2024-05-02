@@ -17,6 +17,7 @@ import {
   Trailer,
   AnimeInfo,
   AnimeInformations,
+  ButtonDiv,
 } from "./styles";
 
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -179,7 +180,9 @@ export const AnimeDetails: React.FC<Props> = ({ anime }) => {
       </AnimeButtonsSelect>
       {openModalTrailer && (
         <ModalContainer>
-          <ModalButton onClick={() => handleCloseModal(1)}>X</ModalButton>
+          <ButtonDiv>
+            <ModalButton onClick={() => handleCloseModal(1)}>X</ModalButton>
+          </ButtonDiv>
           <Trailer>
             {anime && anime.trailer ? (
               <ReactPlayer url={anime.trailer.url} controls={true} />
@@ -191,12 +194,9 @@ export const AnimeDetails: React.FC<Props> = ({ anime }) => {
       )}
       {openModalCharters && (
         <ModalContainer>
-          <ModalButton
-            onClick={() => handleCloseModal(2)}
-            className="close-button"
-          >
-            X
-          </ModalButton>
+          <ButtonDiv>
+            <ModalButton onClick={() => handleCloseModal(2)}>X</ModalButton>
+          </ButtonDiv>
           <Characters>
             {Array.isArray(charactersList?.data) &&
               charactersList?.data.map((character, index) => {
@@ -207,12 +207,9 @@ export const AnimeDetails: React.FC<Props> = ({ anime }) => {
       )}
       {openModalStaff && (
         <ModalContainer>
-          <ModalButton
-            onClick={() => handleCloseModal(3)}
-            className="close-button"
-          >
-            X
-          </ModalButton>
+          <ButtonDiv>
+            <ModalButton onClick={() => handleCloseModal(3)}>X</ModalButton>
+          </ButtonDiv>
           <Characters>
             {Array.isArray(staffList?.data) &&
               staffList?.data.map((staff, index) => {

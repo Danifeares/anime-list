@@ -99,14 +99,19 @@ export const AnimeSelect = styled.button`
 `;
 
 export const ModalContainer = styled.div`
-  width: 600px;
-  height: 300px;
+  width: 80%;
+  height: 80%;
   background-color: #fff;
   padding: 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  @media screen and (min-width: 768px) {
+    width: 60%;
+    height: 70%;
+  }
 `;
 
 export const Characters = styled.div`
@@ -117,16 +122,27 @@ export const Characters = styled.div`
   overflow: auto;
 `;
 
+export const ButtonDiv = styled.div`
+  width: 100%;
+  height: 20px;
+  display: flex;
+  justify-content: end;
+`;
 export const ModalButton = styled.button`
   width: fit-content;
   background-color: red;
   color: white;
   border: none;
-  margin-left: 500px;
   cursor: pointer;
 `;
 
-export const Trailer = styled.div``;
+export const Trailer = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 
 export const AnimeInfo = styled.div`
   display: flex;
