@@ -23,6 +23,7 @@ export const List = styled.div`
 
 export const ListItem = styled.li`
   display: flex;
+  align-items: center;
   gap: 15px;
 `;
 
@@ -32,4 +33,13 @@ export const ListImage = styled.img`
 
 export const ListAnimeTitle = styled.p`
   font-size: 20px;
+`;
+
+export const Button = styled.button`
+  width: fit-content;
+  height: fit-content;
+  background-color: red;
+  border: none;
+  color: #fff;
+  cursor: pointer;
 `;
