@@ -15,6 +15,8 @@ import {
   Characters,
   ModalButton,
   Trailer,
+  AnimeInfo,
+  AnimeInformations,
 } from "./styles";
 
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -148,6 +150,26 @@ export const AnimeDetails: React.FC<Props> = ({ anime }) => {
         <AnimeTitleAndSinops>
           <AnimeTitle>{anime?.title}</AnimeTitle>
           <AnimeSynops>{anime?.synopsis}</AnimeSynops>
+          <AnimeInfo>
+            <AnimeInformations>Release Year: {anime?.year}</AnimeInformations>
+            <p>|</p>
+            <AnimeInformations>
+              Status:
+              {anime?.status == null ? "There are no status" : anime?.status}
+            </AnimeInformations>
+            <p>|</p>
+            <AnimeInformations>
+              Episodes:
+              {anime?.episodes == null
+                ? "There are no episodes"
+                : anime?.episodes}
+            </AnimeInformations>
+            <p>|</p>
+            <AnimeInformations>
+              Rating:
+              {anime?.rating == null ? "There are no rating" : anime?.rating}
+            </AnimeInformations>
+          </AnimeInfo>
         </AnimeTitleAndSinops>
       </AnimeHead>
       <AnimeButtonsSelect>

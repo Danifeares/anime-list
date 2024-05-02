@@ -114,3 +114,14 @@ export const ModalButton = styled.button`
 `;
 
 export const Trailer = styled.div``;
+
+export const AnimeInfo = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+`;
+
+export const AnimeInformations = styled.p`
+  font-size: 14px;
+  color: #748899;
+`;

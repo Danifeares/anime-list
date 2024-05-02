@@ -8,7 +8,7 @@ import { useUser } from "../../hooks/UserContext";
 export const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { logout } = useUser();
+  const { user, logout } = useUser();
 
   const isRegisterPage = location.pathname === "/signup";
 
@@ -37,12 +37,15 @@ export const Navbar = () => {
         <Button onClick={toUserList}>
           <ListAltIcon />
         </Button>
-        <Button onClick={toLogin}>
-          <p>SignUp</p>
-        </Button>
-        <Button onClick={logout}>
-          <p>Logout</p>
-        </Button>
+        {user ? (
+          <Button onClick={logout}>
+            <p>Logout</p>
+          </Button>
+        ) : (
+          <Button onClick={toLogin}>
+            <p>SignUp</p>
+          </Button>
+        )}
       </div>
     </Nav>
   );

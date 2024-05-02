@@ -3,10 +3,11 @@ import { AnimeList } from "../../components/AnimeList";
 import { useGetAnimeList } from "../../hooks/useGetAnimeList";
 import { StyledBox } from "./style";
 import { InputAdornment, Pagination, TextField } from "@mui/material";
-import SearchIcon from '@mui/icons-material/Search';
+import SearchIcon from "@mui/icons-material/Search";
 
 export const Home = () => {
-  const { listOfAnimes, handlePageChange, page, setInputAnime } = useGetAnimeList();
+  const { listOfAnimes, handlePageChange, page, setInputAnime } =
+    useGetAnimeList();
   const navigate = useNavigate();
 
   const handleAnimeClick = (animeId: number) => {
@@ -18,18 +19,21 @@ export const Home = () => {
       <div>
         <TextField
           id="outlined-basic"
-          label='Pesquisar'
+          label="Pesquisar"
           variant="filled"
-          size='small'
-          onChange={(event) => setTimeout(() => setInputAnime(event?.target.value), 500)}
+          size="small"
+          onChange={(event) =>
+            setTimeout(() => setInputAnime(event.target.value), 500)
+          }
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <SearchIcon sx={{ color: 'white' }} />
+                <SearchIcon sx={{ color: "white" }} />
               </InputAdornment>
             ),
           }}
         />
+
         <Pagination
           count={10}
           page={page}

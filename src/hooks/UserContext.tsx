@@ -6,21 +6,18 @@ import React, {
   useState,
 } from "react";
 
-// Defina a interface do usuário
 interface User {
   id: string;
   name: string;
   favoriteAnimes: Anime[];
 }
 
-// Defina a interface do anime
 interface Anime {
   id: string;
   name: string;
   image: string;
 }
 
-// Defina o contexto do usuário
 interface UserContextType {
   user: User | null;
   setUser: React.Dispatch<React.SetStateAction<User | null>>;

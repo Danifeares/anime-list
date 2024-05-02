@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 import { CharactersList } from "../../interfaces/ICharactersList";
-import { CharacterImg, CharactersItem, CharacterName, ModalIsOpen, CharacterImgContainer } from "./styles";
+import {
+  CharacterImg,
+  CharactersItem,
+  CharacterName,
+  ModalIsOpen,
+  CharacterImgContainer,
+} from "./styles";
 import { CharacterModal } from "./CharacterModal";
 
 interface Props {
@@ -30,13 +36,16 @@ export const CharacterList: React.FC<Props> = ({ characters }) => {
         </CharacterImgContainer>
         <CharacterName>{characterData.name || ""}</CharacterName>
       </CharactersItem>
-      {
-        characterDetailModal &&
+      {characterDetailModal && (
         <ModalIsOpen>
-          {characterDetailModal && <CharacterModal character={characters} setCharacterDetailModal={setCharacterDetailModal} />}
+          {characterDetailModal && (
+            <CharacterModal
+              character={characters}
+              setCharacterDetailModal={setCharacterDetailModal}
+            />
+          )}
         </ModalIsOpen>
-      }
+      )}
     </>
-
   );
 };
