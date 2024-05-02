@@ -1,11 +1,14 @@
-import { useLocation, useNavigate } from "react-router-dom";
 
+import { useLocation, useNavigate } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
 import { InputAdornment, TextField } from "@mui/material";
-
 import icon from "/favicon.png";
 import { Button } from "../Button";
 import { Nav } from "./style";
+import icon from '/favicon.png';
+import { Button } from '../Button';
+import { Nav } from './style';
+
 
 export const Navbar = () => {
   const location = useLocation();
@@ -31,6 +34,7 @@ export const Navbar = () => {
         <h1 onClick={toHome}>Anime List</h1>
       </div>
       <div>
+
         <TextField
           id="outlined-basic"
           label="Pesquisar"
@@ -47,6 +51,9 @@ export const Navbar = () => {
           }}
         />
         <Button onClick={toLogin}>SignUp</Button>
+
+        <Button>Login</Button>
+
       </div>
     </Nav>
   );
