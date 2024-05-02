@@ -5,6 +5,7 @@ import { InputEmail } from "../../components/InputEmail/InputEmail";
 import { InputPassword } from "../../components/InputPassword";
 import { Container, InformationDiv, LoginContainer, Title } from "./styles";
 import { useNavigate } from "react-router-dom";
+import { useUser } from "../../hooks/UserContext";
 
 interface UserData {
   name: string;
@@ -13,43 +14,48 @@ interface UserData {
 }
 
 export const Register = () => {
+  const navigate = useNavigate();
+  const { setUser } = useUser();
+
   const [userData, setUserData] = useState<UserData>({
     name: "",
-    password: "",
     email: "",
+    password: "",
   });
-  const navigate = useNavigate();
 
   const handleUserEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     const email = e.target.value;
-    setUserData((prevUserData) => ({
-      ...prevUserData,
+    setUserData({
+      ...userData,
       email: email,
-    }));
+    });
   };
 
   const handleUserName = (e: React.ChangeEvent<HTMLInputElement>) => {
     const name = e.target.value;
-    setUserData((prevUserData) => ({
-      ...prevUserData,
+    setUserData({
+      ...userData,
       name: name,
-    }));
+    });
   };
 
   const handleUserPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
     const password = e.target.value;
-    setUserData((prevUserData) => ({
-      ...prevUserData,
+    setUserData({
+      ...userData,
       password: password,
-    }));
-  };
-
-  const saveUserData = (userData: UserData): void => {
-    localStorage.setItem("userData", JSON.stringify(userData));
+    });
   };
 
   const toSite = () => {
-    saveUserData(userData);
+    const newUser = {
+      id: "",
+      favoriteAnimes: [],
+      ...userData,
+    };
+
+    setUser(newUser);
+
     navigate("/");
   };
 
@@ -61,7 +67,9 @@ export const Register = () => {
           <InputEmail onChange={handleUserEmail} />
           <InputName onChange={handleUserName} />
           <InputPassword onChange={handleUserPassword} />
-          <Button onClick={toSite}>Sing In</Button>
+          <Button onClick={toSite}>
+            <p>Sign In</p>
+          </Button>
         </InformationDiv>
       </LoginContainer>
     </Container>
