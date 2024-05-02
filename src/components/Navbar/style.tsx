@@ -1,7 +1,7 @@
 import { styled } from "@mui/material";
 
-export const Nav = styled('nav')`
-  background-color: #1C7FA6;
+export const Nav = styled("nav")`
+  background-color: #1c7fa6;
   height: 65px;
   width: 100%;
   display: flex;
@@ -27,4 +27,4 @@ export const Nav = styled('nav')`
     gap: 16px;
     width: 400px;
   }
-`
+`;
