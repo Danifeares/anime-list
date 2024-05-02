@@ -22,7 +22,9 @@ import { CharacterList } from "../CharacterList";
 import { http } from "../../http";
 import { useParams } from "react-router-dom";
 import { ICharactersList } from "../../interfaces/ICharactersList";
-import { VideoPlayer } from "../VideoPlayer";
+import ReactPlayer from "react-player";
+import { IStaffList } from "../../interfaces/IStaffList";
+import { Staff } from "../StaffList";
 
 interface Props {
   anime?: AboutAnime;
@@ -34,6 +36,8 @@ export const AnimeDetails: React.FC<Props> = ({ anime }) => {
   const [openModalStaff, setOpenModalStaff] = useState(false);
 
   const [charactersList, setCharactersList] = useState<ICharactersList>();
+  const [staffList, setStaffList] = useState<IStaffList>();
+
   const params = useParams();
 
   useEffect(() => {
@@ -44,6 +48,17 @@ export const AnimeDetails: React.FC<Props> = ({ anime }) => {
       })
       .catch((error) => {
         console.error("Erro ao buscar personagens:", error);
+      });
+  }, []);
+
+  useEffect(() => {
+    http
+      .get(`/anime/${params.id}/staff`)
+      .then((res) => {
+        setStaffList(res.data);
+      })
+      .catch((error) => {
+        console.error("Erro ao buscar staff:", error);
       });
   }, []);
 
@@ -108,7 +123,9 @@ export const AnimeDetails: React.FC<Props> = ({ anime }) => {
         <ModalContainer>
           <ModalButton onClick={() => handleCloseModal(1)}>X</ModalButton>
           <Trailer>
-            <a href={anime?.trailer.url}>{anime?.trailer.url}</a>
+            {anime && anime.trailer && (
+              <ReactPlayer url={anime.trailer.url} controls={true} />
+            )}
           </Trailer>
         </ModalContainer>
       )}
@@ -137,9 +154,9 @@ export const AnimeDetails: React.FC<Props> = ({ anime }) => {
             X
           </ModalButton>
           <Characters>
-            {Array.isArray(charactersList?.data) &&
-              charactersList?.data.map((character, index) => {
-                return <CharacterList key={index} characters={character} />;
+            {Array.isArray(staffList?.data) &&
+              staffList?.data.map((staff, index) => {
+                return <Staff key={index} staff={staff} />;
               })}
           </Characters>
         </ModalContainer>
