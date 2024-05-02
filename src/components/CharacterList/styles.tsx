@@ -13,4 +13,6 @@ export const CharacternName = styled.h2`
   font-size: 13px;
 `;
 
-export const CharctersRole = styled.p``;
+export const CharctersRole = styled.p`
+  font-size: 8px;
+`;
