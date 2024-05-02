@@ -17,14 +17,18 @@ export const Navbar = () => {
     navigate("/signup");
   };
 
+  const toHome = () => {
+    navigate("/");
+  };
+
   if (isRegisterPage) {
     return null;
   }
   return (
     <Nav>
       <div>
-        <img src={icon} />
-        <h1>Anime List</h1>
+        <img onClick={toHome} src={icon} />
+        <h1 onClick={toHome}>Anime List</h1>
       </div>
       <div>
         <TextField
