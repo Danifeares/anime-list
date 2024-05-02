@@ -112,3 +112,5 @@ export const ModalButton = styled.button`
   margin-left: 500px;
   cursor: pointer;
 `;
+
+export const Trailer = styled.div``;
