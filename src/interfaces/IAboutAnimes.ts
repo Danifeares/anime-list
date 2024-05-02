@@ -1,6 +1,5 @@
 export type AboutAnime = {
   mal_id: string;
-  url: string;
   images: {
     jpg: {
       image_url: string;

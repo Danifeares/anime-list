@@ -2,7 +2,11 @@ import styled from "styled-components";
 
 export const AnimeContainer = styled.div`
   width: 100%;
-  height: 100px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 `;
 
 export const AnimeHead = styled.div`
@@ -42,7 +46,7 @@ export const AnimeImageAndButton = styled.div`
   margin-bottom: 90px;
   margin-left: 30px;
   align-items: center;
-  gap: 13px;
+  gap: 16px;
 `;
 
 export const AnimeButton = styled.button`
@@ -56,4 +60,55 @@ export const AnimeButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  &:hover {
+    background-color: #0eb1b1;
+  }
+`;
+
+export const AnimeButtonsSelect = styled.div`
+  display: flex;
+  gap: 10px;
+`;
+
+export const AnimeSelect = styled.button`
+  width: 80px;
+  height: 20px;
+  background-color: #fff;
+  border: none;
+  border-radius: 10px;
+  color: #748899;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #e4dada;
+  }
+`;
+
+export const ModalContainer = styled.div`
+  width: 600px;
+  height: 300px;
+  background-color: #fff;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const Characters = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: auto;
+`;
+
+export const ModalButton = styled.button`
+  width: fit-content;
+  background-color: red;
+  color: white;
+  border: none;
+  margin-left: 500px;
+  cursor: pointer;
 `;
