@@ -6,10 +6,21 @@ import {
   Title,
   ListAnimeTitle,
   AnimesList,
+  Button,
 } from "./styles";
 
 export const UserList = () => {
-  const { user } = useUser();
+  const { user, setUser } = useUser();
+
+  const removeAnime = (id: string) => {
+    if (!user) return;
+
+    const updatedFavoriteAnimes = user?.favoriteAnimes.filter(
+      (anime) => anime.id != id
+    );
+
+    setUser({ ...user, favoriteAnimes: updatedFavoriteAnimes });
+  };
 
   return (
     <AnimesList>
@@ -21,6 +32,7 @@ export const UserList = () => {
               <p>#{index < 10 ? "0" + index : index}</p>
               <ListImage src={anime.image} alt={anime.name} />
               <ListAnimeTitle>{anime.name}</ListAnimeTitle>
+              <Button onClick={() => removeAnime(anime.id)}>X</Button>
             </ListItem>
           ))}
       </List>
