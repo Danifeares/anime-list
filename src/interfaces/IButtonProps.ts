@@ -1,4 +1,6 @@
+import { ReactElement } from "react";
+
 export interface IButtonProps {
-  children: string;
+  children: ReactElement;
   onClick: () => void;
 }

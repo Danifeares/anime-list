@@ -1,13 +1,14 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import SearchIcon from "@mui/icons-material/Search";
-import { InputAdornment, TextField } from "@mui/material";
 import icon from "/favicon.png";
+import ListAltIcon from "@mui/icons-material/ListAlt";
 import { Button } from "../Button";
 import { Nav } from "./style";
+import { useUser } from "../../hooks/UserContext";
 
 export const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const { logout } = useUser();
 
   const isRegisterPage = location.pathname === "/signup";
 
@@ -17,6 +18,10 @@ export const Navbar = () => {
 
   const toHome = () => {
     navigate("/");
+  };
+
+  const toUserList = () => {
+    navigate("/userlist");
   };
 
   if (isRegisterPage) {
@@ -29,7 +34,15 @@ export const Navbar = () => {
         <h1 onClick={toHome}>Anime List</h1>
       </div>
       <div>
-        <Button onClick={toLogin}>SignUp</Button>
+        <Button onClick={toUserList}>
+          <ListAltIcon />
+        </Button>
+        <Button onClick={toLogin}>
+          <p>SignUp</p>
+        </Button>
+        <Button onClick={logout}>
+          <p>Logout</p>
+        </Button>
       </div>
     </Nav>
   );

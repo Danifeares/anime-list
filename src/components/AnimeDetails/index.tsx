@@ -20,11 +20,12 @@ import {
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { CharacterList } from "../CharacterList";
 import { http } from "../../http";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { ICharactersList } from "../../interfaces/ICharactersList";
 import ReactPlayer from "react-player";
 import { IStaffList } from "../../interfaces/IStaffList";
 import { Staff } from "../StaffList";
+import { useUser } from "../../hooks/UserContext";
 
 interface Props {
   anime?: AboutAnime;
@@ -38,6 +39,9 @@ export const AnimeDetails: React.FC<Props> = ({ anime }) => {
   const [charactersList, setCharactersList] = useState<ICharactersList>();
   const [staffList, setStaffList] = useState<IStaffList>();
 
+  const { user, setUser } = useUser();
+
+  const navigate = useNavigate();
   const params = useParams();
 
   useEffect(() => {
@@ -99,12 +103,44 @@ export const AnimeDetails: React.FC<Props> = ({ anime }) => {
     }
   };
 
+  const handleAddAnimeFavorite = (
+    animeId: string,
+    animeImg: string,
+    animeName: string
+  ) => {
+    if (!user) {
+      navigate("/signup");
+    } else {
+      const newAnime = { id: animeId, image: animeImg, name: animeName };
+
+      const storedUser = localStorage.getItem("user");
+      const storedUserObject = storedUser ? JSON.parse(storedUser) : null;
+
+      const updatedUser = {
+        ...storedUserObject,
+        favoriteAnimes: [...(storedUserObject?.favoriteAnimes || []), newAnime],
+      };
+
+      setUser(updatedUser);
+      localStorage.setItem("user", JSON.stringify(updatedUser));
+    }
+  };
+
   return (
     <AnimeContainer>
       <AnimeHead>
         <AnimeImageAndButton>
           <AnimeImage src={anime?.images.jpg.image_url} />
-          <AnimeButton>
+          <AnimeButton
+            onClick={() =>
+              anime?.mal_id &&
+              handleAddAnimeFavorite(
+                anime.mal_id,
+                anime.images.jpg.image_url,
+                anime.title
+              )
+            }
+          >
             Favorite
             <FavoriteIcon fontSize="small" />
           </AnimeButton>
@@ -123,8 +159,10 @@ export const AnimeDetails: React.FC<Props> = ({ anime }) => {
         <ModalContainer>
           <ModalButton onClick={() => handleCloseModal(1)}>X</ModalButton>
           <Trailer>
-            {anime && anime.trailer && (
+            {anime && anime.trailer ? (
               <ReactPlayer url={anime.trailer.url} controls={true} />
+            ) : (
+              <div>Anime sem trailer</div>
             )}
           </Trailer>
         </ModalContainer>
