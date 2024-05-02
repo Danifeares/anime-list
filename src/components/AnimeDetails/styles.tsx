@@ -2,11 +2,12 @@ import styled from "styled-components";
 
 export const AnimeContainer = styled.div`
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
+  box-sizing: border-box;
 `;
 
 export const AnimeHead = styled.div`
@@ -18,6 +19,12 @@ export const AnimeHead = styled.div`
   justify-content: center;
   gap: 25px;
   box-sizing: border-box;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    height: 580px;
+    gap: 0;
+    padding: 16px;
+  }
 `;
 
 export const AnimeImage = styled.img`
@@ -36,6 +43,10 @@ export const AnimeSynops = styled.p`
   font-size: 10px;
   color: #748899;
   margin: 0;
+  width: 100%;
+  max-height: 100px;
+  overflow: auto;
+  box-sizing: border-box;
 `;
 
 export const AnimeTitleAndSinops = styled.div``;
@@ -47,6 +58,10 @@ export const AnimeImageAndButton = styled.div`
   margin-left: 30px;
   align-items: center;
   gap: 16px;
+  @media screen and (max-width: 768px) {
+    margin: 0;
+    padding: 0;
+  }
 `;
 
 export const AnimeButton = styled.button`
@@ -60,7 +75,6 @@ export const AnimeButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-
   &:hover {
     background-color: #0eb1b1;
   }
@@ -79,7 +93,6 @@ export const AnimeSelect = styled.button`
   border-radius: 10px;
   color: #748899;
   cursor: pointer;
-
   &:hover {
     background-color: #e4dada;
   }
@@ -117,11 +130,18 @@ export const Trailer = styled.div``;
 
 export const AnimeInfo = styled.div`
   display: flex;
-  align-items: center;
+  align-items: baseline;
   gap: 10px;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    margin-top: 10px;
+    > p {
+      display: none;
+    }
+  }
 `;
 
-export const AnimeInformations = styled.p`
+export const AnimeInformations = styled.span`
   font-size: 14px;
   color: #748899;
 `;
