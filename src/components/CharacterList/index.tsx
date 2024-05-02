@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { CharactersList } from "../../interfaces/ICharactersList";
-import { CharacterImg, CharactersItem, CharacternName } from "./styles";
+import { CharacterImg, CharactersItem, CharacterName, ModalIsOpen, CharacterImgContainer } from "./styles";
+import { CharacterModal } from "./CharacterModal";
 
 interface Props {
   characters?: CharactersList;
 }
 
 export const CharacterList: React.FC<Props> = ({ characters }) => {
+  const [characterDetailModal, setCharacterDetailModal] = useState(false);
+
   if (!characters) {
     return null;
   }
@@ -16,12 +19,24 @@ export const CharacterList: React.FC<Props> = ({ characters }) => {
   const characterData = character || {};
 
   return (
-    <CharactersItem>
-      <CharacterImg
-        src={characterData.images?.jpg?.image_url || ""}
-        alt={characterData.name || ""}
-      />
-      <CharacternName>{characterData.name || ""}</CharacternName>
-    </CharactersItem>
+    <>
+      <CharactersItem>
+        <CharacterImgContainer onClick={() => setCharacterDetailModal(true)}>
+          <CharacterImg
+            src={characterData.images?.jpg?.image_url || ""}
+            alt={characterData.name || ""}
+          />
+          <div>Ver mais</div>
+        </CharacterImgContainer>
+        <CharacterName>{characterData.name || ""}</CharacterName>
+      </CharactersItem>
+      {
+        characterDetailModal &&
+        <ModalIsOpen>
+          {characterDetailModal && <CharacterModal character={characters} setCharacterDetailModal={setCharacterDetailModal} />}
+        </ModalIsOpen>
+      }
+    </>
+
   );
 };
