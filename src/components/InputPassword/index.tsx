@@ -5,5 +5,7 @@ type InputPasswordProsp = {
 };
 
 export const InputPassword: React.FC<InputPasswordProsp> = ({ onChange }) => {
-  return <PasswordUser onChange={onChange} placeholder="Password" />;
+  return (
+    <PasswordUser onChange={onChange} placeholder="Password" type="password" />
+  );
 };

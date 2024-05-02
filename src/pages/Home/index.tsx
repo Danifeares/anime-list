@@ -3,12 +3,13 @@ import { AnimeList } from "../../components/AnimeList";
 import { useGetAnimeList } from "../../hooks/useGetAnimeList";
 import { StyledBox } from "./style";
 import { InputAdornment, Pagination, TextField } from "@mui/material";
-import SearchIcon from '@mui/icons-material/Search';
+import SearchIcon from "@mui/icons-material/Search";
 import { useEffect, useState } from "react";
 
 export const Home = () => {
-  const [inputText, setInputText] = useState('');
-  const { listOfAnimes, handlePageChange, page, setInputAnime } = useGetAnimeList();
+  const [inputText, setInputText] = useState("");
+  const { listOfAnimes, handlePageChange, page, setInputAnime } =
+    useGetAnimeList();
   const navigate = useNavigate();
 
   const handleAnimeClick = (animeId: number) => {
@@ -17,13 +18,13 @@ export const Home = () => {
 
   const filtredUniqueAnimes: { [x: number]: boolean } = {};
 
-  const filtredAnimes = listOfAnimes.data?.filter(item => {
+  const filtredAnimes = listOfAnimes.data?.filter((item) => {
     if (filtredUniqueAnimes.hasOwnProperty(item.mal_id)) {
       return false;
     }
     filtredUniqueAnimes[item.mal_id] = true;
-    return true
-  })
+    return true;
+  });
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
@@ -37,19 +38,20 @@ export const Home = () => {
       <div>
         <TextField
           id="outlined-basic"
-          label='Pesquisar'
+          label="Pesquisar"
           variant="filled"
-          size='small'
+          size="small"
           value={inputText}
           onChange={(event) => setInputText(event?.target.value)}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <SearchIcon sx={{ color: 'white' }} />
+                <SearchIcon sx={{ color: "white" }} />
               </InputAdornment>
             ),
           }}
         />
+
         <Pagination
           count={10}
           page={page}

@@ -1,5 +1,6 @@
 export type AboutAnime = {
   mal_id: string;
+  title: string;
   images: {
     jpg: {
       image_url: string;
@@ -10,10 +11,12 @@ export type AboutAnime = {
     url: string;
     embed_url: string;
   };
-  title: string;
   episodes: number;
   status: string;
   synopsis: string;
+  type: string;
+  rating: string;
+  year: number;
 };
 
 export interface IAboutAnime {
