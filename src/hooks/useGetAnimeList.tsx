@@ -9,7 +9,7 @@ export const useGetAnimeList = () => {
   const [animeFinded, setAnimeFinded] = useState<ITopAnimes>({})
 
   const handlePageChange = (
-    event: React.ChangeEvent<unknown>,
+    _: React.ChangeEvent<unknown>,
     value: number
   ) => {
     setPage(value);
